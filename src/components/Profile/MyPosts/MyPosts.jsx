@@ -1,10 +1,13 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import DialogItem from "../../Dialogs/DialogItem/DialogItem";
 import {Field, reduxForm} from "redux-form";
-
+import {maxLengthCreator, required} from "../../../utils/validators/validator";
+import {Elements} from "../../common/FormsControls/FormsControl";
+const maxLength10 = maxLengthCreator(10);
 const MyPosts = (props) => {
+
+
     let postsElements =
         props.posts.map(p => <Post message={p.message} key={p.id} likesCount={p.likesCount}/>);
 
@@ -25,11 +28,12 @@ const MyPosts = (props) => {
         </div>
     )
 }
+const Textarea = Elements("textarea");
 
 const AddNewPostForm =(props)=>{
     return    <form onSubmit={props.handleSubmit}>
         <div>
-            <Field component="textarea" name="newPostText" placeholder ="Enter new post"/>
+            <Field validate={[required, maxLength10]} component={Textarea} name="newPostText" placeholder ="Enter new post"/>
 
         </div>
         <div>
