@@ -4,7 +4,9 @@
 }
 
 .header img {
-    width: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 100px;
 }
 
 .loginBlock {
