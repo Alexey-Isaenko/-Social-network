@@ -10,8 +10,10 @@ let User = (props) => {
         pages.push(i);
     }
     return <div>
+
         <div>
             {pages.map(p => {
+
                 return <span className={props.currentPage === p && styles.selectPage}
                              onClick={(e) => {
                                  props.onPageChanged(p)
